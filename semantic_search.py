@@ -118,10 +118,11 @@ def semantic_search(
     k = min(k, len(MODELS))  # k가 전체 문서 수보다 크면 조정
     distances, indices = index.search(query_embedding.astype('float32'), k)
 
-    # 🍑 결과 포맷팅
+     # 🍑 결과 포맷팅
     results = []
     for score, idx in zip(distances[0], indices[0]):
-        if idx < len(MODELS):  # 인덱스 범위 체크
+        # 🍑 Score 0.3 이상만 필터링 (30% 이상 유사도)
+        if idx < len(MODELS) and score >= 0.3:  # 인덱스 범위 체크 + score 필터링
             item = MODELS[idx]
             results.append({
                 "id": item.get("id", idx),
@@ -149,4 +150,5 @@ if __name__ == "__main__":
     # 🍑 서버 실행 (포트 8000)
     print("🍑 AI 의미 검색 서버 시작: http://localhost:8000")
     print("🍑 API 문서: http://localhost:8000/docs")
+
     uvicorn.run("semantic_search:app", host="0.0.0.0", port=8000, reload=True)
