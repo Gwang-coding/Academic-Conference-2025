@@ -11,7 +11,7 @@ call npm install
 REM Python 패키지 설치
 echo.
 echo 🍑 AI 서버 패키지 설치 중...
-pip install -r requirements.txt 2>nul || pip3 install -r requirements.txt
+pip install -r requirements-python.txt 2>nul || pip3 install -r requirements-python.txt
 
 REM 서버 동시 실행
 echo.

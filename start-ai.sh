@@ -24,7 +24,7 @@ source venv/bin/activate
 
 # 패키지 설치
 echo "🍑 필요한 패키지 설치 중..."
-pip install -r requirements.txt
+pip install -r requirements-python.txt
 
 # AI 서버 실행
 echo ""

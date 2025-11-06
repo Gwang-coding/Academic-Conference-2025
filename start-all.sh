@@ -24,7 +24,7 @@ fi
 # 가상환경 활성화 및 AI 서버 백그라운드 실행
 (
     source venv/bin/activate
-    pip install -q -r requirements.txt
+    pip install -q -r requirements-python.txt
     python semantic_search.py &
 ) 2>/dev/null
 
